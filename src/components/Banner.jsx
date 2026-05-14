@@ -7,7 +7,7 @@ const Banner = () => {
       {/* Background */}
       <div className="absolute inset-0">
         <Image
-          src="/assets/banner.png"
+          src="/assets/banner.jpeg"
           alt="Travel Banner"
           fill
           priority
@@ -15,7 +15,7 @@ const Banner = () => {
         />
 
         {/* Overlay */}
-        <div className="absolute inset-0 bg-black/55" />
+        <div className="absolute inset-0 bg-black/65" />
       </div>
 
       {/* Content */}
