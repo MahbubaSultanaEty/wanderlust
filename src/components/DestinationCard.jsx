@@ -1,6 +1,7 @@
 import { ArrowChevronRight, TargetDart } from "@gravity-ui/icons";
 import { CalendarCheck, CalendarFold } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
 
 
 const DestinationCard = ({ destination }) => {
@@ -34,11 +35,11 @@ const DestinationCard = ({ destination }) => {
       </div>
 
       {/* Content */}
-      <div className="p-6 space-y-2">
+      <div className="p-6 space-y-2 ">
         
         {/* Title + Country */}
         <div>
-          <h2 className="text-2xl font-bold text-gray-800">
+          <h2 className="text-xl font-bold text-gray-800 h-12">
            {destinationName}
           </h2>
 
@@ -70,9 +71,13 @@ const DestinationCard = ({ destination }) => {
             </h3>
           </div>
 
-          <button className="bg-cyan-500 hover:bg-cyan-600 text-white px-4 py-3 rounded-2xl font-semibold transition-all duration-300 shadow-md hover:shadow-cyan-200 flex  items-center gap-2">
+          <Link href={`/destinations/${destination._id}`}>
+                <button className="bg-cyan-500 hover:bg-cyan-600 text-white px-4 py-2 text-sm rounded-2xl font-semibold transition-all duration-300 shadow-md hover:shadow-cyan-200 flex  items-center gap-2">
             Book Now <ArrowChevronRight className="-rotate-25"/>
           </button>
+          </Link>
+
+      
         </div>
       </div>
     </div>
