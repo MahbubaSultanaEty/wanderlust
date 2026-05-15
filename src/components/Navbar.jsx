@@ -25,8 +25,8 @@ export default function Navbar() {
               My Bookings
             </Link>
 
-            <Link href="/admin" className="hover:text-blue-600 transition">
-              Admin
+            <Link href="/add-destination" className="hover:text-blue-600 transition">
+              Add Destination
             </Link>
           </div>
 
@@ -101,7 +101,7 @@ export default function Navbar() {
 
               <Link href="/bookings">My Bookings</Link>
 
-              <Link href="/admin">Admin</Link>
+              <Link href="/add-destination">Add Destination</Link>
             </div>
           </details>
         </div>
