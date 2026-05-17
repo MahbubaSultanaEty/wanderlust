@@ -17,6 +17,7 @@ const DestinationCard = ({ destination }) => {
   } = destination;
 
   return (
+    <Link href={`/destinations/${destination._id}`}>
     <div className="group bg-white rounded-3xl overflow-hidden border border-cyan-100 shadow-sm hover:shadow-2xl transition-all duration-300 hover:-translate-y-1 max-w-sm mx-auto ">
       
       {/* Image */}
@@ -71,16 +72,15 @@ const DestinationCard = ({ destination }) => {
             </h3>
           </div>
 
-          <Link href={`/destinations/${destination._id}`}>
+          
                 <button className="bg-cyan-500 hover:bg-cyan-600 text-white px-4 py-2 text-sm rounded-2xl font-semibold transition-all duration-300 shadow-md hover:shadow-cyan-200 flex  items-center gap-2">
             Book Now <ArrowChevronRight className="-rotate-25"/>
           </button>
-          </Link>
-
-      
+ 
         </div>
       </div>
     </div>
+     </Link>
   );
 };
 
