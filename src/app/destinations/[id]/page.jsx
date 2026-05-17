@@ -1,4 +1,6 @@
-import { CalendarDays, Clock3, MapPin, Star, Users } from "lucide-react";
+import { EditDestinationForm } from "@/components/EditDestinationModal";
+
+import { CalendarDays, ChartScatter, Clock3, Edit, MapPin, Star, Users } from "lucide-react";
 import Image from "next/image";
 
 
@@ -22,11 +24,14 @@ const DestinationDetailsPage = async({ params }) => {
     
     const parts= description.split(".")
     return (
-        <div>
+        <div> 
+            <div className="text-right my-4 mx-10">
+          <EditDestinationForm destination={ destination} />
+            </div>
               <section className="bg-[#f8fafc] min-h-screen py-10">
       <div className="max-w-7xl mx-auto px-5">
         {/* Banner */}
-        <div className="relative h-[500px] rounded-[32px] overflow-hidden">
+        <div className="relative h-125 rounded-[32px] overflow-hidden">
           <Image
             src={imageUrl}
             alt="Destination"
@@ -162,15 +167,15 @@ const DestinationDetailsPage = async({ params }) => {
                 </div>
 
                 <div className="flex items-center gap-4">
-                  <Users className="text-cyan-500" />
+                  <ChartScatter className="text-cyan-500" />
 
                   <div>
                     <h3 className="font-semibold">
-                      Group Size
+                      Category
                     </h3>
 
                     <p className="text-sm text-gray-500">
-                      10 People
+                      {category}
                     </p>
                   </div>
                 </div>
@@ -184,7 +189,7 @@ const DestinationDetailsPage = async({ params }) => {
                     </h3>
 
                     <p className="text-sm text-gray-500">
-                      May - December
+                      {departureDate}
                     </p>
                   </div>
                 </div>

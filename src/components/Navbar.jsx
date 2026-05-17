@@ -66,7 +66,7 @@ export default function Navbar() {
               <Image
                 src={"/assets/Wanderlast.png"}
                 width={120}
-                height={60}
+                height={80}
                 alt="logo"
               />
 
