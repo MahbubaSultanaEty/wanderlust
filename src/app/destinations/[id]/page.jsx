@@ -1,3 +1,4 @@
+import DeleteAlert from "@/components/DeleteAlert";
 import { EditDestinationForm } from "@/components/EditDestinationModal";
 
 import { CalendarDays, ChartScatter, Clock3, Edit, MapPin, Star, Users } from "lucide-react";
@@ -25,8 +26,9 @@ const DestinationDetailsPage = async({ params }) => {
     const parts= description.split(".")
     return (
         <div> 
-            <div className="text-right my-4 mx-10">
-          <EditDestinationForm destination={ destination} />
+            <div className="flex justify-end gap-6 my-4 mx-10">
+          <EditDestinationForm destination={destination} />
+          <DeleteAlert destination={destination} />
             </div>
               <section className="bg-[#f8fafc] min-h-screen py-10">
       <div className="max-w-7xl mx-auto px-5">
