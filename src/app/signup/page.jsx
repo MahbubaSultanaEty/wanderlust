@@ -13,14 +13,32 @@ import {
 
 import { Sparkles, User, ImageIcon, Mail, Lock, PlaneIcon } from "lucide-react";
 import { motion } from "framer-motion";
+import { authClient } from "@/lib/auth-client";
+import { toast } from "react-toastify";
+import { redirect } from "next/navigation";
 
 export default function FancySignupForm() {
-  const onSubmit = (e) => {
+  const onSubmit = async(e) => {
     e.preventDefault();
 
-    const formData = new FormData(e.currentTarget);
+      const formData = new FormData(e.currentTarget);
+      const user = Object.fromEntries(formData.entries());
 
-    alert("Account Created ✨");
+      const { data, error } = await authClient.signUp.email({
+          email: user.email,
+          name: user.name,
+          image: user.image,
+          password: user.password
+      })
+
+      console.log(data);
+      if (data) {
+          toast("Account Created ✨");
+          redirect("/profile")
+      }
+      if(error){
+        toast.error("invalid Ccredentials")
+    }
   };
 
   return (
@@ -78,9 +96,10 @@ export default function FancySignupForm() {
               <div className="relative">
                 <User className="absolute left-4 top-1/2 -translate-y-1/2 text-black size-5 z-10" />
 
-                <Input
+                              <Input
+                                  name="name"
                   placeholder="John Doe"
-                  className="pl-12 rounded-2xl bg-white/60 border border-white/20 text-black w-full placeholder:text-black/50 h-14"
+                  className="pl-12 rounded-2xl bg-white/80 border border-white/20 text-black w-full placeholder:text-black/50 h-14"
                 />
               </div>
 
@@ -105,9 +124,10 @@ export default function FancySignupForm() {
               <div className="relative">
                 <ImageIcon className="absolute left-4 top-1/2 -translate-y-1/2 text-black size-5 z-10" />
 
-                <Input
+                              <Input
+                                  name="image"
                   placeholder="https://example.com/photo.jpg"
-                  className="pl-12 rounded-2xl bg-white/60 border border-white/20 text-black w-full placeholder:text-black/50 h-14"
+                  className="pl-12 rounded-2xl bg-white/80 border border-white/20 text-black w-full placeholder:text-black/50 h-14"
                 />
               </div>
 
@@ -136,9 +156,10 @@ export default function FancySignupForm() {
               <div className="relative">
                 <Mail className="absolute left-4 top-1/2 -translate-y-1/2 text-black size-5 z-10" />
 
-                <Input
+                              <Input
+                                  name="email"
                   placeholder="john@example.com"
-                  className="pl-12 rounded-2xl bg-white/60 border border-white/20 text-black w-full placeholder:text-black/50 h-14"
+                  className="pl-12 rounded-2xl bg-white/80 border border-white/20 text-black w-full placeholder:text-black/50 h-14"
                 />
               </div>
 
@@ -168,13 +189,15 @@ export default function FancySignupForm() {
               }}
             >
               <Label className="text-gray-200">Password</Label>
-
+       
               <div className="relative">
                 <Lock className="absolute  left-4 top-1/2 -translate-y-1/2 text-black size-5 z-10" />
 
-                <Input
+                              <Input
+                                  name="password"
+                                  type="password"
                   placeholder="Enter your password"
-                  className="pl-12 rounded-2xl bg-white/60 border border-white/20 text-black w-full placeholder:text-black/50 h-14"
+                  className="pl-12 rounded-2xl bg-white/80 border border-white/20 text-black w-full placeholder:text-black/50 h-14"
                 />
               </div>
 
@@ -190,20 +213,12 @@ export default function FancySignupForm() {
               <motion.div whileTap={{ scale: 0.97 }}>
                 <Button
                   type="submit"
-                  className="w-full h-14 rounded-2xl bg-cyan-500 text-white text-lg font-semibold shadow-lg shadow-cyan-500/40"
+                  className="w-full h-14 rounded-none bg-cyan-500 text-white text-lg font-semibold shadow-lg shadow-cyan-500/40"
                 >
                   <Check />
                   Create Account
                 </Button>
-              </motion.div>
-
-              <Button
-                type="reset"
-                variant="secondary"
-                className="rounded-2xl h-14 bg-white/10 text-white border border-white/20"
-              >
-                Reset Form
-              </Button>
+              </motion.div>         
             </div>
           </Form>
         </div>
