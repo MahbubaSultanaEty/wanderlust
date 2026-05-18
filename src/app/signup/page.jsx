@@ -33,7 +33,7 @@ export default function FancySignupForm() {
 
       console.log(data);
       if (data) {
-          toast("Account Created ✨");
+          toast.success("Account Created ✨");
           redirect("/profile")
       }
       if(error){

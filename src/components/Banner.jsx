@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { MapPin, CalendarDays, Wallet, Users, Search } from "lucide-react";
 
+
 const Banner = () => {
   return (
     <section className="relative overflow-hidden">
@@ -23,7 +24,7 @@ const Banner = () => {
         {/* Hero Content */}
         <div className="max-w-4xl mx-auto text-center text-white">
           <p className="uppercase tracking-[5px] text-cyan-400 text-sm mb-5">
-            Explore The World
+            Explore The World 
           </p>
 
           <h1 className="text-5xl md:text-7xl font-bold leading-tight">
