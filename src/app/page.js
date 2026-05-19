@@ -1,12 +1,14 @@
 import Banner from "@/components/Banner";
+import Stats from "@/components/Stats";
 import TopDestinationsContainer from "@/components/TopDestinationsContainer";
-import Image from "next/image";
+
 
 export default function Home() {
   return (
     <div >
       
       <Banner /> 
+      <Stats/>
       <TopDestinationsContainer/>
       
     </div>

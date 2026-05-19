@@ -1,8 +1,17 @@
+import { auth } from "@/lib/auth";
+import { Avatar } from "@heroui/react";
 import { Menu } from "lucide-react";
+import { headers } from "next/headers";
 import Image from "next/image";
 import Link from "next/link";
 
-export default function Navbar() {
+export default async function Navbar() {
+
+  const session = await auth.api.getSession({
+    headers: await headers()
+  });
+  const user = session?.user;
+  console.log(user);
   return (
     <nav className="w-full border-b bg-white shadow-sm">
       <div className="max-w-7xl mx-auto px-4 py-4">
@@ -69,8 +78,19 @@ export default function Navbar() {
                 height={80}
                 alt="logo"
               />
-
-              <div className="flex gap-3 pt-2">
+              {user ? <>
+                <Avatar>
+                   <Avatar.Image alt={user?.name} src={user?.image} />
+                  <Avatar.Fallback>{ user?.name.charAt[0]}</Avatar.Fallback>
+                </Avatar>
+              <Link
+                  href="/signup"
+                  className="bg-blue-600 text-white px-4 py-2 rounded-full"
+                >
+                  Log out
+                </Link>
+              </> : <>
+                 <div className="flex gap-3 pt-2">
                 <Link href="/login" className="border px-4 py-2 rounded-full">
                   Login
                 </Link>
@@ -82,6 +102,8 @@ export default function Navbar() {
                   Sign Up
                 </Link>
               </div>
+              </>}
+             
 
               {/* Right */}
               <div className="flex items-center gap-3">

@@ -12,7 +12,7 @@ export default function TopDestinations({ destinations }) {
   const topDestinations = destinations.slice(0, 4);
 
   return (
-    <section className="relative py-28 px-4 md:px-10 overflow-hidden bg-white">
+    <section id="topDestination" className="relative py-28 px-4 md:px-10 overflow-hidden bg-white">
       {/* Background Glow */}
       <div className="absolute top-0 left-0 size-72 bg-cyan-200/40 blur-3xl rounded-full" />
       <div className="absolute bottom-0 right-0 size-72 bg-blue-200/40 blur-3xl rounded-full" />

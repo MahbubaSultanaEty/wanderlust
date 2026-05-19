@@ -49,7 +49,8 @@ const LoginPage = () => {
       <div className="absolute size-96 bg-purple-500/20 blur-3xl rounded-full bottom-0 right-0" />
 
       {/* Animated Grid */}
-      <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff10_1px,transparent_1px),linear-gradient(to_bottom,#ffffff10_1px,transparent_1px)] bg-[size:6rem_6rem]" />
+        <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff10_1px,transparent_1px),linear-gradient(to_bottom,#ffffff10_1px,transparent_1px)] 
+      bg-size-[6rem_6rem]" />
 
       <motion.div
         initial={{ opacity: 0, y: 80, scale: 0.9 }}
