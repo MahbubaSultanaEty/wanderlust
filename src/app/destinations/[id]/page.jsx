@@ -1,7 +1,8 @@
+import BookingCard from "@/components/BookingCard";
 import DeleteAlert from "@/components/DeleteAlert";
 import { EditDestinationForm } from "@/components/EditDestinationModal";
 
-import { CalendarDays, ChartScatter, Clock3, Edit, MapPin, Star, Users } from "lucide-react";
+import {  MapPin, users } from "lucide-react";
 import Image from "next/image";
 
 
@@ -137,74 +138,7 @@ const DestinationDetailsPage = async({ params }) => {
 
           {/* Booking Card */}
           <div>
-            <div className="bg-white rounded-3xl p-8 shadow-sm sticky top-10">
-              <div className="flex items-center justify-between">
-                <h2 className="text-4xl font-bold">
-                 $ {price}
-                </h2>
-
-                <div className="flex items-center gap-1 text-yellow-500">
-                  <Star size={18} fill="currentColor" />
-                  <span className="font-semibold">4.9</span>
-                </div>
-              </div>
-
-              <p className="text-gray-500 mt-1">
-                Per Person
-              </p>
-
-              <div className="space-y-5 mt-8">
-                <div className="flex items-center gap-4">
-                  <Clock3 className="text-cyan-500" />
-
-                  <div>
-                    <h3 className="font-semibold">
-                      Duration
-                    </h3>
-
-                    <p className="text-sm text-gray-500">
-                      {duration}
-                    </p>
-                  </div>
-                </div>
-
-                <div className="flex items-center gap-4">
-                  <ChartScatter className="text-cyan-500" />
-
-                  <div>
-                    <h3 className="font-semibold">
-                      Category
-                    </h3>
-
-                    <p className="text-sm text-gray-500">
-                      {category}
-                    </p>
-                  </div>
-                </div>
-
-                <div className="flex items-center gap-4">
-                  <CalendarDays className="text-cyan-500" />
-
-                  <div>
-                    <h3 className="font-semibold">
-                      Available
-                    </h3>
-
-                    <p className="text-sm text-gray-500">
-                      {departureDate}
-                    </p>
-                  </div>
-                </div>
-              </div>
-
-              <button className="w-full mt-10 bg-cyan-500 hover:bg-cyan-400 transition text-white py-4 rounded-2xl font-semibold cursor-pointer">
-                Book Now
-              </button>
-
-              <button className="w-full mt-4 border border-gray-300 hover:bg-gray-100 transition py-4 rounded-2xl font-semibold cursor-pointer">
-                Save Destination
-              </button>
-            </div>
+                <BookingCard destination={ destination} />
           </div>
         </div>
       </div>
