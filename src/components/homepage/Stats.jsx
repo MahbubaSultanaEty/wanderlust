@@ -7,7 +7,7 @@ const Stats = () => {
             
         {/* Search Box */}
         <div className="mt-20">
-          <div className="backdrop-blur-xl bg-black/90 border border-black/20 rounded-3xl p-4 md:p-6 shadow-2xl">
+          <div className="backdrop-blur-xl bg-black border border-black/20 rounded-3xl p-4 md:p-6 shadow-2xl">
             <div className="grid grid-cols-1 md:grid-cols-5 gap-5 items-center">
               {/* Location */}
               <div className="flex items-start gap-3">

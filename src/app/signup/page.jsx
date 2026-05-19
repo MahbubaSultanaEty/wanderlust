@@ -16,6 +16,7 @@ import { motion } from "framer-motion";
 import { authClient } from "@/lib/auth-client";
 import { toast } from "react-toastify";
 import { redirect } from "next/navigation";
+import GoogleButton from "@/components/GoogleButton";
 
 export default function FancySignupForm() {
   const onSubmit = async(e) => {
@@ -221,6 +222,11 @@ export default function FancySignupForm() {
               </motion.div>         
             </div>
           </Form>
+           <hr className="text-white w-full mx-auto h-2 mt-4 "/>
+                      <div className="flex justify-center">
+          
+           <GoogleButton/>
+                      </div>
         </div>
       </motion.div>
     </div>

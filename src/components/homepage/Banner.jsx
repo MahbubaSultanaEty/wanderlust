@@ -14,7 +14,7 @@ const Banner = () => {
       </div>
 
       {/* Content */}
-      <div className="relative z-10 max-w-7xl mx-auto px-5 pt-10 pb-10 min-h-screen flex flex-col justify-center">
+      <div className="relative z-10 max-w-7xl mx-auto px-5 pt-10 pb-6 min-h-screen flex flex-col justify-center">
         {/* Hero Content */}
         <div className="max-w-4xl mx-auto text-center text-white">
           <p className="uppercase tracking-[5px] text-cyan-400 text-sm mb-5">

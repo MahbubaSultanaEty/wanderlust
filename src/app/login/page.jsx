@@ -16,6 +16,7 @@ import { motion } from "framer-motion";
 import { authClient } from "@/lib/auth-client";
 import { toast } from "react-toastify";
 import { redirect } from "next/navigation";
+import GoogleButton from "@/components/GoogleButton";
 
 const LoginPage = () => {
 
@@ -76,7 +77,7 @@ const LoginPage = () => {
             </motion.div>
                         <div className="flex items-center">
                       <h1 className="text-2xl font-bold text-white flex items-center justify-center gap-3">
-                                Log in to exploer more  <Globe size={ 30} />
+                                Log in to explor more  <Globe size={ 30} />
             </h1>       
               </div>           
           
@@ -175,7 +176,13 @@ const LoginPage = () => {
                 </Button>
               </motion.div>         
             </div>
-          </Form>
+            </Form>
+            <hr className="text-white w-full mx-auto h-2 mt-4 "/>
+            <div className="flex justify-center">
+
+ <GoogleButton/>
+            </div>
+           
         </div>
       </motion.div>
     </div>
