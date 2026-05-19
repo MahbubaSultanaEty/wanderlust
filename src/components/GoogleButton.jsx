@@ -1,8 +1,16 @@
+import { authClient } from "@/lib/auth-client";
+import { toast } from "react-toastify";
 
 
 export default function GoogleButton() {
-    const signIn = () => {
-        
+    const signIn = async() => {
+        const data = await authClient.signIn.social({
+            provider: "google"        
+        },
+        )
+           if (data) {
+                toast.success("signing in ")
+            }
     }
   return (
     <button

@@ -11,14 +11,14 @@ import { useState } from "react";
 import { toast } from "react-toastify";
 
 export default function Navbar() {
-  const pathname = usePathname(); // বর্তমান ইউআরএল পাথ ট্র্যাক করবে
+  const pathname = usePathname(); 
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
-  // BetterAuth সেশন হুক (সরাসরি টপ-লেভেলে কল করতে হবে)
+  
   const { data: session } = authClient.useSession();
   const user = session?.user;
 
-  // সাইন আউট হ্যান্ডলার
+  
   const handleLogout = async () => {
     await authClient.signOut({
       fetchOptions: {
@@ -33,7 +33,7 @@ export default function Navbar() {
     });
   };
 
-  // নেভিগেশন লিংকগুলোর জন্য কমন অ্যারে (কোড ক্লিন রাখার জন্য)
+ 
   const navLinks = [
     { name: "Home", href: "/" },
     { name: "Destinations", href: "/destinations" },
@@ -41,7 +41,7 @@ export default function Navbar() {
     { name: "Add Destination", href: "/add-destination" },
   ];
 
-  // একটিভ এবং হোভার ইফেক্টের ক্লাস জেনারেটর
+  
   const getLinkClass = (href) => {
     const isActive = pathname === href;
     return `relative py-2 text-sm font-medium transition-all duration-300 before:absolute before:bottom-0 before:left-0 before:h-[2px] before:w-full before:origin-right before:scale-x-0 before:bg-blue-600 before:transition-transform before:duration-300 hover:before:origin-left hover:before:scale-x-100 ${
@@ -84,10 +84,15 @@ export default function Navbar() {
           <div className="hidden md:flex items-center gap-4">
             {user ? (
               <div className="flex items-center gap-3">
-                <Link href="/profile" className={getLinkClass("/profile")}>
+                <Link href="/profile" className={getLinkClass("/profile") }>
                   Profile
                 </Link>
-                <Avatar src={user?.image} name={user?.name?.charAt(0) || "U"} size="sm" className="w-8 h-8 cursor-pointer" />
+               <Avatar>
+                  <Avatar.Image referrerPolicy="no-referrer
+                  " src={user?.image} alt={user?.name} />
+                  <Avatar.Fallback>{ user?.name.charAt[0]}</Avatar.Fallback>
+                </Avatar>
+                
                 <button
                   onClick={handleLogout}
                   className="bg-blue-500 hover:bg-blue-600 text-white px-4 py-1.5 rounded-full text-sm font-medium transition active:scale-95 shadow-sm"
@@ -123,7 +128,7 @@ export default function Navbar() {
                   Log out
               </button>
               </div> ) : (
-              <div className="w-full flex gap-2 pt-2">
+              <div className=" w-3xl flex gap-2 pt-2">
                 <Link 
                   href="/login" 
                   onClick={() => setIsMobileMenuOpen(false)}
@@ -145,7 +150,7 @@ export default function Navbar() {
                 <Link 
                   href="/profile" 
                   onClick={() => setIsMobileMenuOpen(false)}
-                  className={`w-full py-2 rounded-lg text-base font-medium ${pathname === "/profile" ? "bg-blue-50 text-blue-600" : "text-gray-600"}`}
+                  className={`w-full py-2 rounded-lg text-sm font-medium ${pathname === "/profile" ? "bg-blue-50 text-blue-600" : "text-gray-600"}`}
                 >
                   Profile
                 </Link> 

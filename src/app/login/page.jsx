@@ -17,6 +17,7 @@ import { authClient } from "@/lib/auth-client";
 import { toast } from "react-toastify";
 import { redirect } from "next/navigation";
 import GoogleButton from "@/components/GoogleButton";
+import Link from "next/link";
 
 const LoginPage = () => {
 
@@ -177,6 +178,7 @@ const LoginPage = () => {
               </motion.div>         
             </div>
             </Form>
+            <p className="text-white text-center text-sm my-2">Don&apos;nt have an account? <Link href="/signup" className="text-blue-500">Sign Up</Link> </p>
             <hr className="text-white w-full mx-auto h-2 mt-4 "/>
             <div className="flex justify-center">
 

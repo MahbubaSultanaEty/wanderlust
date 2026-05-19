@@ -1,5 +1,5 @@
 import { ArrowChevronRight, TargetDart } from "@gravity-ui/icons";
-import { CalendarCheck, CalendarFold } from "lucide-react";
+import { CalendarCheck } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -11,7 +11,6 @@ const DestinationCard = ({ destination }) => {
     category,
     price,
     duration,
-    departureDate,
     imageUrl,
     description,
   } = destination;

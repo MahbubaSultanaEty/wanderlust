@@ -1,6 +1,7 @@
 "use client"
 import { Button, FieldError, Input, Label, ListBox, TextArea, TextField, Select } from '@heroui/react';
 import React from 'react';
+import { toast } from 'react-toastify';
 
 const AddDestinationPage = () => {
 
@@ -18,7 +19,7 @@ const AddDestinationPage = () => {
         body: JSON.stringify(destination)
     })
       const data = await res.json();
-      console.log(data);
+      toast("package added successfully")
     }
 
     const isPending = false;

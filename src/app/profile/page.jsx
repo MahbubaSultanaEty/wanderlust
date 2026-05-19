@@ -1,54 +1,64 @@
-"use client";
+"use client"
+import { useEffect, useState } from "react";
+import { authClient } from "@/lib/auth-client";
+import Image from "next/image";
+import { Mail, CalendarDays, UserCircle } from "lucide-react";
 
-import { motion, useScroll, useTransform } from "framer-motion";
+export default function ProfilePage() {
+  const [user, setUser] = useState(null);
 
-export default function ParallaxSection() {
-  const { scrollY } = useScroll();
+  useEffect(() => {
+    const fetchSession = async () => {
+      const { data } = await authClient.getSession();
+      setUser(data?.user);
+    };
+    fetchSession();
+  }, []);
 
-  // background moves slower
-  const bgY = useTransform(scrollY, [0, 1000], [0, 300]);
+  if (!user) return <p>Loading...</p>;
 
-  // text moves faster
-  const textY = useTransform(scrollY, [0, 1000], [0, -200]);
+return (
+    <div style={{ minHeight: "100vh", background: "linear-gradient(135deg, #667eea 0%, #764ba2 100%)", display: "flex", alignItems: "center", justifyContent: "center", fontFamily: "sans-serif" }}>
+      <div style={{
+        background: "#fff",
+        borderRadius: 16,
+        padding: "36px 28px",
+        width: 340,
+        boxShadow: "0 20px 60px rgba(0,0,0,0.2)",
+        textAlign: "center"
+      }}>
+        <div style={{ position: "relative", display: "inline-block", marginBottom: 16 }}>
+          {user.image ? (
+            <Image
+              src={user.image || "/placeholder.png"}
+              alt={user.name}
+              width={90}
+              height={90}
+              style={{ borderRadius: "50%", border: "4px solid #667eea" }}
+            />
+          ) : (
+            <div style={{ width: 90, height: 90, borderRadius: "50%", background: "linear-gradient(135deg, #667eea, #764ba2)", display: "flex", alignItems: "center", justifyContent: "center", margin: "0 auto" }}>
+              <UserCircle size={52} color="#fff" />
+            </div>
+          )}
+        </div>
 
-  // image rotates slightly
-  const rotate = useTransform(scrollY, [0, 1000], [0, 10]);
+        <h2 style={{ margin: "0 0 4px", color: "#1a1a1a", fontSize: 22 }}>{user.name}</h2>
 
-  return (
-    <section className="relative h-[200vh] bg-black overflow-hidden">
-      
-      {/* Background */}
-      <motion.div
-        style={{ y: bgY }}
-        className="absolute inset-0"
-      >
-        <img
-          src="https://images.unsplash.com/photo-1506744038136-46273834b3fb"
-          className="w-full h-[120vh] object-cover opacity-40"
-        />
-      </motion.div>
+        <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 6, margin: "8px 0" }}>
+          <Mail size={15} color="#667eea" />
+          <span style={{ color: "#555", fontSize: 14 }}>{user.email}</span>
+        </div>
 
-      {/* Floating Image */}
-      <motion.img
-        style={{ y: textY, rotate }}
-        src="https://images.unsplash.com/photo-1526772662000-3f88f10405ff"
-        className="absolute top-40 right-20 w-80 rounded-3xl shadow-2xl"
-      />
+        <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 6, marginTop: 6 }}>
+          <CalendarDays size={15} color="#764ba2" />
+          <span style={{ color: "#aaa", fontSize: 13 }}>Joined {new Date(user.createdAt).toLocaleDateString()}</span>
+        </div>
 
-      {/* Content */}
-      <motion.div
-        style={{ y: textY }}
-        className="relative z-10 h-screen flex flex-col items-center justify-center text-center px-6"
-      >
-        <h1 className="text-7xl font-bold text-white">
-          Explore The World
-        </h1>
-
-        <p className="text-gray-300 text-xl mt-6 max-w-2xl">
-          Scroll down and watch the cinematic parallax animation
-          bring your landing page to life.
-        </p>
-      </motion.div>
-    </section>
+        <div style={{ marginTop: 20, padding: "10px 20px", background: "linear-gradient(135deg, #667eea, #764ba2)", borderRadius: 8, display: "inline-block" }}>
+          <span style={{ color: "#fff", fontSize: 13, fontWeight: 600 }}>Active Member</span>
+        </div>
+      </div>
+    </div>
   );
 }
