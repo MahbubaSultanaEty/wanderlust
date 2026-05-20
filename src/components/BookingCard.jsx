@@ -3,11 +3,12 @@ import { authClient } from "@/lib/auth-client";
 import { DateField, Label } from "@heroui/react";
 import { CalendarDays, ChartScatter, Clock3, Edit, Star, Users } from "lucide-react";
 import { useState } from "react";
+import { toast } from "react-toastify";
 
 const BookingCard = ({ destination }) => {
     const { data: session } = authClient.useSession();
     const user = session?.user;
-    // console.log(user);
+    console.log(user);
     const [departureDate, setDepadtureDate] = useState(null);
 
    
@@ -41,7 +42,9 @@ const BookingCard = ({ destination }) => {
             body: JSON.stringify(bookingData)
         })
         const data = await res.json();
-        console.log(data);
+     
+      toast.success("You booked successfully")
+      
     }
     return (
        <div className="bg-white rounded-3xl p-8 shadow-sm sticky top-10">
