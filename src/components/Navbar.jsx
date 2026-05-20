@@ -90,7 +90,7 @@ export default function Navbar() {
                <Avatar>
                   <Avatar.Image referrerPolicy="no-referrer
                   " src={user?.image} alt={user?.name} />
-                  <Avatar.Fallback>{ user?.name.charAt[0]}</Avatar.Fallback>
+                  <Avatar.Fallback>{ user?.name.charAt(0)}</Avatar.Fallback>
                 </Avatar>
                 
                 <button
@@ -156,7 +156,7 @@ export default function Navbar() {
                 </Link> 
                 <Avatar>
                   <Avatar.Image src={user?.image} alt={user?.name}/>
-                  <Avatar.Fallback>{ user?.name.charAt[0]}</Avatar.Fallback>
+                  <Avatar.Fallback>{ user?.name.charAt(0)}</Avatar.Fallback>
                 </Avatar>
                 
               </div>

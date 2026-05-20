@@ -14,13 +14,15 @@ const BookingCancelAlert = ({ bookingId }) => {
                 "content-type": 'application/json'
             }
         });
-        const data = await res.json();
+      const data = await res.json();
+      
+      window.location.reload()
         // console.log(data);
         if (data) {
             toast.warning("booking cancelled")
         }
         if (!data) {
-            toast.error("fai")
+            toast.error("Cancelling failed")
         }
     }
     return (
