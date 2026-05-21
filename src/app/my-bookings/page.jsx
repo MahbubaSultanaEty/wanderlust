@@ -90,14 +90,7 @@ const MyBookingPage = async () => {
                         <p className="text-sm text-gray-500">Departure</p>
 
                         <h3 className="font-semibold text-gray-900 mt-1">
-                          {new Date(booking.departureDate).toLocaleDateString(
-                            "en-US",
-                            {
-                              year: "numeric",
-                                month: "long",
-                              day: "numeric"
-                            },
-                          )}
+                         {new Date(booking.departureDate).toISOString().slice(0, 10)}
                         </h3>
                       </div>
 

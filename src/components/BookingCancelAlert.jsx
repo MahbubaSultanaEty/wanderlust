@@ -5,7 +5,7 @@ import { toast } from "react-toastify";
 
 
 const BookingCancelAlert = ({ bookingId }) => {
-    console.log(bookingId);
+    // console.log(bookingId);
 
     const handleCancelBooking = async () => {
         const res = await fetch(`http://localhost:5000/booking/${bookingId}`, {

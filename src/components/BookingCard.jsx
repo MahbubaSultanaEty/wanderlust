@@ -15,7 +15,7 @@ import { toast } from "react-toastify";
 const BookingCard = ({ destination }) => {
   const { data: session } = authClient.useSession();
   const user = session?.user;
-  console.log(user);
+  // console.log(user);
   const [departureDate, setDepartureDate] = useState(null);
 
   const {
@@ -99,7 +99,7 @@ const BookingCard = ({ destination }) => {
               <DateField.Group>
                 <DateField.Input>
                   {(segment) => <DateField.Segment segment={segment} />}
-                </DateField.Input>
+                </DateField.Input> 
               </DateField.Group>
             </DateField>
           </div>

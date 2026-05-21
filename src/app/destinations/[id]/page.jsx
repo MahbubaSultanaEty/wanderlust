@@ -1,17 +1,27 @@
 import BookingCard from "@/components/BookingCard";
 import DeleteAlert from "@/components/DeleteAlert";
 import { EditDestinationForm } from "@/components/EditDestinationModal";
+import { auth } from "@/lib/auth";
 
 import {  MapPin, users } from "lucide-react";
+import { headers } from "next/headers";
 import Image from "next/image";
 
 
 const DestinationDetailsPage = async({ params }) => {
     const { id } = await params;
-    // console.log(id);
-
-    const res = await fetch(`http://localhost:5000/destination/${id}`);
-    const destination = await res.json();
+  // console.log(id);
+  const { token } = await auth.api.getToken({
+    headers: await headers()
+  })
+ console.log(token);
+  const res = await fetch(`http://localhost:5000/destination/${id}`, {
+    headers: {
+        authorization: `Bearer ${token}`
+      }
+    });
+  const destination = await res.json();
+  console.log(destination);
 
     const {
     destinationName,
@@ -24,7 +34,8 @@ const DestinationDetailsPage = async({ params }) => {
     description,
     } = destination;
     
-    const parts= description.split(".")
+  console.log(imageUrl);
+    
     return (
         <div> 
             <div className="flex justify-end gap-6 my-4 mx-10">
@@ -36,7 +47,7 @@ const DestinationDetailsPage = async({ params }) => {
         {/* Banner */}
         <div className="relative h-125 rounded-[32px] overflow-hidden">
           <Image
-            src={imageUrl}
+            src={destination?.imageUrl}
             alt="Destination"
             fill
             className="object-cover"
@@ -68,14 +79,10 @@ const DestinationDetailsPage = async({ params }) => {
             <div className="bg-white rounded-3xl p-8 shadow-sm">
               <h2 className="text-3xl font-bold mb-5">
                 About This Destination
-              </h2>
-
-              <p className="text-gray-600 leading-relaxed">
-                {parts[0]}.
-              </p>
+              </h2>             
 
               <p className="text-gray-600 leading-relaxed mt-4">
-                {parts.slice(1).join(".")}
+                {description}
               </p>
             </div>
 
