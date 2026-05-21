@@ -7,6 +7,7 @@ const client = new MongoClient(process.env.MONGO_URI);
 const db = client.db("wanderlust");
 
 export const auth = betterAuth({
+   trustedOrigins: ["https://wanderlust-delta-two.vercel.app"],
   database: mongodbAdapter(db, {
     client
   }),

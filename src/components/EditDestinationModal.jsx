@@ -1,5 +1,6 @@
 "use client";
 
+import { authClient } from "@/lib/auth-client";
 import {
   Button,
   FieldError,
@@ -16,6 +17,8 @@ import { Edit, Edit3, Save } from "lucide-react";
 import { useState } from "react";
 
 export function EditDestinationForm({ destination }) {
+
+
   const [open, setOpen] = useState(false);
 
   const {
@@ -39,10 +42,13 @@ export function EditDestinationForm({ destination }) {
     const destination = Object.fromEntries(formData.entries());
     console.log(destination);   
 
-    const res= await  fetch(`http://localhost:5000/destination/${_id}`, {
+    const { data: tokenData } = await authClient.token();
+
+    const res= await  fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/destination/${_id}`, {
         method: "PATCH",
         headers: {
-          'content-type': "application/json"
+          'content-type': "application/json",
+          authorization: `Bearer ${tokenData?.token}`
         },
         body: JSON.stringify(destination)
     })

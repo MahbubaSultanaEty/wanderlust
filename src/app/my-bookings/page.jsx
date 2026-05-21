@@ -8,10 +8,18 @@ const MyBookingPage = async () => {
   const session = await auth.api.getSession({
     headers: await headers(),
   });
+
+  const { token } = await auth.api.getToken({
+    headers: await headers()
+  })
    
   const user = session?.user;
   const userId = user?.id;
-  const res = await fetch(`http://localhost:5000/booking/${userId}`);
+  const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/booking/${userId}`, {
+    headers: {
+      authorization: `Bearer ${token}`
+    }
+  });
   const bookings = await res.json();
   return (
     <section className="min-h-screen bg-gradient-to-br from-cyan-50 via-white to-blue-50 py-16 px-5">

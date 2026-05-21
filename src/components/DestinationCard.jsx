@@ -23,7 +23,8 @@ const DestinationCard = ({ destination }) => {
       <div className="relative h-64 w-full overflow-hidden">
         <Image
           fill
-          src={imageUrl}
+            src={imageUrl}
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
           alt={destinationName}
           className="h-64 w-full object-cover group-hover:scale-105 transition-transform duration-500"
         />

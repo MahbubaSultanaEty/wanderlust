@@ -1,20 +1,25 @@
 "use client"
+import { authClient } from '@/lib/auth-client';
 import { Button, FieldError, Input, Label, ListBox, TextArea, TextField, Select } from '@heroui/react';
 import React from 'react';
 import { toast } from 'react-toastify';
 
 const AddDestinationPage = () => {
 
+ 
     const onSubmit = async(e) => {
         e.preventDefault();
         const formData = new FormData(e.currentTarget);
         const destination = Object.fromEntries(formData.entries());
-      // console.log(destination); 
+      // console.log(destination);
       
-    const res= await  fetch('http://localhost:5000/destination', {
+      const {data: tokenData} = await authClient.token()
+
+    const res= await  fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/destination`, {
         method: "POST",
         headers: {
-          'content-type': "application/json"
+          'content-type': "application/json",
+          authorization: `Bearer ${tokenData?.token}`
         },
         body: JSON.stringify(destination)
     })

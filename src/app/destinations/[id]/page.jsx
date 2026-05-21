@@ -8,14 +8,16 @@ import { headers } from "next/headers";
 import Image from "next/image";
 
 
-const DestinationDetailsPage = async({ params }) => {
+const DestinationDetailsPage = async ({ params }) => {
+  
+
     const { id } = await params;
   // console.log(id);
   const { token } = await auth.api.getToken({
     headers: await headers()
   })
- console.log(token);
-  const res = await fetch(`http://localhost:5000/destination/${id}`, {
+//  console.log(token);
+  const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/destination/${id}`, {
     headers: {
         authorization: `Bearer ${token}`
       }
@@ -34,7 +36,7 @@ const DestinationDetailsPage = async({ params }) => {
     description,
     } = destination;
     
-  console.log(imageUrl);
+
     
     return (
         <div> 
@@ -50,7 +52,8 @@ const DestinationDetailsPage = async({ params }) => {
             src={destination?.imageUrl}
             alt="Destination"
             fill
-            className="object-cover"
+                className="object-cover"
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
           />
 
           <div className="absolute inset-0 bg-black/40" />
