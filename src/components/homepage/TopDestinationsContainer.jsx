@@ -3,7 +3,7 @@ import TopDestinations from './TopDestinations';
 
 const TopDestinationsContainer = async() => {
 
-    const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/destination`, { cache: "no-store" });
+    const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/featured`, { cache: "no-store" });
     const destinations = await res.json();
     
     return (
