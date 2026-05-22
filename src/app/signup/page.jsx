@@ -99,7 +99,7 @@ export default function FancySignupForm() {
 
                               <Input
                                   name="name"
-                  placeholder="John Doe"
+                  placeholder="Enter Your Name"
                   className="pl-12 rounded-2xl bg-white/80 border border-white/20 text-black w-full placeholder:text-black/50 h-14"
                 />
               </div>
@@ -159,7 +159,7 @@ export default function FancySignupForm() {
 
                               <Input
                                   name="email"
-                  placeholder="john@example.com"
+                  placeholder="Enter Your Email"
                   className="pl-12 rounded-2xl bg-white/80 border border-white/20 text-black w-full placeholder:text-black/50 h-14"
                 />
               </div>
