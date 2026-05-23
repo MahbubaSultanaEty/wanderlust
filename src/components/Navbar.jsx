@@ -3,10 +3,10 @@
 import React from "react";
 import { authClient } from "@/lib/auth-client";
 import { Avatar, AvatarFallback, AvatarImage } from "@heroui/react";
-import { Menu, X } from "lucide-react"; // X আইকনটি মোবাইল মেনু টগলের জন্য লাগবে
+import { Menu, X } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-import { usePathname } from "next/navigation"; // একটিভ ট্যাব চেনার জন্য বেস্ট উপায়
+import { usePathname } from "next/navigation"; 
 import { useState } from "react";
 import { toast } from "react-toastify";
 
